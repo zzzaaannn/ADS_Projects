@@ -1,0 +1,57 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+How does the words vary by genre? 
+the most frequent word used by genre
+
+How does the words vary by artist? 
+the most frequent word used by artist
+
+```{r include=FALSE}
+library(quanteda)
+```
+
+```{r}
+cv <- c("This vector is a character vector.",
+        "It has three elements.",
+        "Each element is a text string.")
+```
+
+```{r}
+tokens(cv)  # returns a list
+corpusCV <- corpus(cv)
+summary(corpus(cv))
+texts(corpusCV)
+head(texts(corpusCV))
+dfm(cv)
+```
+
+```{r}
+library(tm)
+```
+
+```{r}
+getTransformations()
+removePunctuation(cv)
+stripWhitespace(cv)
+```
+```{r}
+
+tm_map(corpusCV,content_transformer(tolower))
+```
+
+
+```{r}
+library(qdap)
+text <- "DataCamp is the first online learning platform that focuses on building the best learning experience specifically for Data Science. We have offices in New York, London and Belgium and to date, we trained over 3.8 million (aspiring) data scientists in over 150 countries. These data science enthusiasts completed more than 185 million exercises. You can take free beginner courses, or subscribe for $29/month to get access to all premium courses."
+term_count <- freq_terms(text,4)
+plot(term_count)
+
+```
+
+
+
+
+
